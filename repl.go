@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/NamesNotRich/pokedexcli/internal/pokeapi"
+
 )
 
 type cliCommand struct {
@@ -15,6 +18,9 @@ type cliCommand struct {
 
 type config struct {
 	commands map[string]cliCommand
+	nextLocationsURL *string
+	prevLocationsURL *string
+	pokeapiClient        pokeapi.Client
 }
 
 func getCommands() map[string]cliCommand {
@@ -28,6 +34,16 @@ func getCommands() map[string]cliCommand {
 		name:        "exit",
 		description: "Exit the Pokedex",
 		callback:    commandExit,
+	},
+	"map": {
+		name: "map",
+		description: "Displays names of next 20 locations",
+		callback: commandMapf,
+	},
+	"mapb": {
+		name: "mapb",
+		description: "Displays names of previous 20 locations",
+		callback: commandMapb,
 	},
 	}
 }
