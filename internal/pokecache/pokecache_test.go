@@ -12,14 +12,14 @@ func TestAddGet(t *testing.T) {
 		key string
 		val []byte
 	}{
-	{
-		key: "https://example.com",
-		val: []byte("testdata"),
-	},
-	{
-		key: "https://example.com/path",
-		val: []byte("moretestdata"),
-	},
+		{
+			key: "https://example.com",
+			val: []byte("testdata"),
+		},
+		{
+			key: "https://example.com/path",
+			val: []byte("moretestdata"),
+		},
 	}
 
 	for i, c := range cases {
