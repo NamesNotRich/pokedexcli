@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/NamesNotRich/pokedexcli/internal/pokeapi"
-
 )
 
 type cliCommand struct {
@@ -17,34 +16,34 @@ type cliCommand struct {
 }
 
 type config struct {
-	commands map[string]cliCommand
+	commands         map[string]cliCommand
 	nextLocationsURL *string
 	prevLocationsURL *string
-	pokeapiClient        pokeapi.Client
+	pokeapiClient    pokeapi.Client
 }
 
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
-	"help": {
-		name: "help",
-		description: "Displays a help message",
-		callback:    commandHelp,
-	},
-	"exit": {
-		name:        "exit",
-		description: "Exit the Pokedex",
-		callback:    commandExit,
-	},
-	"map": {
-		name: "map",
-		description: "Displays names of next 20 locations",
-		callback: commandMapf,
-	},
-	"mapb": {
-		name: "mapb",
-		description: "Displays names of previous 20 locations",
-		callback: commandMapb,
-	},
+		"help": {
+			name:        "help",
+			description: "Displays a help message",
+			callback:    commandHelp,
+		},
+		"exit": {
+			name:        "exit",
+			description: "Exit the Pokedex",
+			callback:    commandExit,
+		},
+		"map": {
+			name:        "map",
+			description: "Displays names of next 20 locations",
+			callback:    commandMapf,
+		},
+		"mapb": {
+			name:        "mapb",
+			description: "Displays names of previous 20 locations",
+			callback:    commandMapb,
+		},
 	}
 }
 
@@ -65,7 +64,7 @@ func startRepl(cfg *config) {
 		if exists {
 			err := cmd.callback(cfg)
 			if err != nil {
-			fmt.Println( err)
+				fmt.Println(err)
 			}
 			continue
 		} else {
