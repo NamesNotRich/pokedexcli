@@ -20,7 +20,7 @@ type config struct {
 	pokeapiClient    pokeapi.Client
 	nextLocationsURL *string
 	prevLocationsURL *string
-	caughtPokemon map[string]pokeapi.Pokemon
+	caughtPokemon    map[string]pokeapi.Pokemon
 }
 
 func getCommands() map[string]cliCommand {
@@ -30,10 +30,20 @@ func getCommands() map[string]cliCommand {
 			description: "Displays a help message",
 			callback:    commandHelp,
 		},
-		"exit": {
-			name:        "exit",
-			description: "Exit the Pokedex",
-			callback:    commandExit,
+		"catch": {
+			name:        "catch <pokemon_name>",
+			description: "Attempt to catch a pokemon",
+			callback:    commandCatch,
+		},
+		"explore": {
+			name:        "explore <location_name>",
+			description: "Explore a location",
+			callback:    commandExplore,
+		},
+		"inspect": {
+			name:        "inspect <pokemon_name>",
+			description: "Inspect a caught pokemon",
+			callback:    commandInspect,
 		},
 		"map": {
 			name:        "map",
@@ -45,15 +55,10 @@ func getCommands() map[string]cliCommand {
 			description: "Displays names of previous 20 locations",
 			callback:    commandMapb,
 		},
-		"explore": {
-			name:        "explore <location_name>",
-			description: "Explore a location",
-			callback:    commandExplore,
-		},
-		"catch": {
-			name: "catch <pokemon_name>",
-			description: "Attempt to catch a pokemon",
-			callback: commandCatch,
+		"exit": {
+			name:        "exit",
+			description: "Exit the Pokedex",
+			callback:    commandExit,
 		},
 	}
 }

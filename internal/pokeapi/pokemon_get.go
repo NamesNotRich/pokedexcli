@@ -1,6 +1,6 @@
 package pokeapi
 
-import(
+import (
 	"encoding/json"
 	"fmt"
 	"io"
