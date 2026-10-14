@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func commandExplore(cfg *config, args []string) error {
+func commandExplore(cfg *config, args ...string) error {
 	if len(args) != 1 {
 		return errors.New("you have to provide exactly one city name")
 	}
